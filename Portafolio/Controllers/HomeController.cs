@@ -1,11 +1,18 @@
 using System.Diagnostics;
-using IntroduccionABosstrap.Models;
+using Portafolio.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace IntroduccionABosstrap.Controllers
+namespace Portafolio.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
+
         public IActionResult Index()
         {
             return View();

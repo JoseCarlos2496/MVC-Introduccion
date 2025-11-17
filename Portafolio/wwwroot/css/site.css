@@ -30,6 +30,12 @@ body {
   text-align: start;
 }
 
+.row {
+    height: 100PX;
+    border: 1px solid black;
+    margin-bottom: 1rem;
+}
+
 .row > div {
     border: 1px solid black;
 }

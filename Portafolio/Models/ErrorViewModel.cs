@@ -1,4 +1,4 @@
-namespace IntroduccionABosstrap.Models
+namespace Portafolio.Models
 {
     public class ErrorViewModel
     {
