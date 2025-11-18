@@ -1,29 +1,11 @@
-﻿@model Persona
+﻿@model HomeIndexDTO
 
 @{
     ViewData["Title"] = "Pagina Principal";
-
-    string ConvertirAMayusculas(string texto)
-    {
-        return texto.ToUpper();
-    }
 }
 
-<div class="text-center">
-    @*<h1 class="display-4">Soy @ViewBag.Nombre</h1> NO ES TIPEADO FUERTEMENTE*@   
-    <h1 class="display-4">Soy @ConvertirAMayusculas(Model.Nombre) (@Model.Edad)</h1>
+<partial name="_Presentacion" />
 
-    @if(Model.Edad >= 18)
-    {
-        <h4>Eres mayo de edad!!! Puedes pasar.<button>Entrar</button></h4>
-    }
-    else
-    {
-        <h4>Largate!!!</h4>
-    }
+<partial name="_Habilidades" />
 
-    <h2>Soy un dearrollador full stack especializad en tecnologías .NET y JS</h2>
-
-    <img src="~/images/foto.png" alt="Foto de Jose Araujo" class="img-fluid rounded-circle my-4" id="foto" />
-
-</div>
+<partial name="_SeccionProyectos" model="Model.Proyectos" />
