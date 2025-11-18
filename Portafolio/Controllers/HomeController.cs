@@ -1,19 +1,19 @@
 using System.Diagnostics;
 using Portafolio.Models;
 using Microsoft.AspNetCore.Mvc;
-using Portafolio.Servicios;
+using Portafolio.Interfaces;
 
 namespace Portafolio.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IRepositorioServicio _repositorioServicio;
+        private readonly IServicioEmail _servicioEmail;
 
-        public HomeController(ILogger<HomeController> logger, IRepositorioServicio repositorioServicio)
+        public HomeController(IRepositorioServicio repositorioServicio, IServicioEmail servicioEmail)
         {
-            _logger = logger;
             _repositorioServicio = repositorioServicio;
+            _servicioEmail = servicioEmail;
         }
 
 
@@ -33,6 +33,30 @@ namespace Portafolio.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Proyectos()
+        {
+            var proyectos = _repositorioServicio.ObtenerProyectos();
+            return View(proyectos);
+        }
+
+        [HttpGet]
+        public IActionResult Contacto()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Contacto(ContactoDTO dto)
+        {
+            await _servicioEmail.Enviar(dto);
+            return RedirectToAction("Gracias");
+        }
+
+        public IActionResult Gracias()
         {
             return View();
         }

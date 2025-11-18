@@ -1,3 +1,4 @@
+using Portafolio.Interfaces;
 using Portafolio.Servicios;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<IRepositorioServicio, RepositorioServicio>();
+builder.Services.AddTransient<IRepositorioServicio, RepositorioServicio>();
+builder.Services.AddTransient<IServicioEmail, ServicioEmailGmail>();
 
 var app = builder.Build();
 

@@ -1,6 +1,6 @@
 ﻿using Portafolio.Models;
 
-namespace Portafolio.Servicios
+namespace Portafolio.Interfaces
 {
     public interface IRepositorioServicio
     {
